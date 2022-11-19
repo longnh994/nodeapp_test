@@ -1,7 +1,7 @@
 pipeline {
 
     environment {
-        dockerimagename = "longnh994/nodeapp:${env.BUILD_NUMBER}"
+        dockerimagename = "longnh994/nodeapp:build-${env.BUILD_NUMBER}"
         dockerImage = ""
     }
 
