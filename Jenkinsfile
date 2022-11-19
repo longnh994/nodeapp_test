@@ -1,7 +1,7 @@
 pipeline {
 
     environment {
-        dockerimagename = "longnh994/nodeapp"
+        dockerimagename = "longnh994/nodeapp:${env.BUILD_NUMBER}"
         dockerImage = ""
     }
 
@@ -30,16 +30,16 @@ pipeline {
             steps {
                 script {
                     docker.withRegistry('https://registry.hub.docker.com/', registryCredential) {
-                    dockerImage.push('latest')
+                    dockerImage.push()
                     }
                 }
             }
         }
 
-        stage('Deploy') {
-            steps {
-                kubernetesDeploy(configs: "deploymentservice.yml", kubeconfigId: "kubernetes")
-            }
-        }
+        // stage('Deploy') {
+        //     steps {
+        //         kubernetesDeploy(configs: "deploymentservice.yml", kubeconfigId: "kubernetes")
+        //     }
+        // }
     }
 }
