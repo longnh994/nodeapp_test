@@ -11,14 +11,12 @@ pipeline {
         stage('Print env') {
             environment {
                 A = credentials('testcre')
-                B = credentials('testcre_USR')
-                C = credentials('testcre_PSW')
             }
             steps {
                 echo '$A'
                 echo "$A"
-                echo '$B'
-                echo "$B"
+                echo '$A_PSW'
+                echo "$A_PSW"
             }
         }
 
