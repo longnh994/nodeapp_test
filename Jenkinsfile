@@ -8,18 +8,6 @@ pipeline {
     agent any
 
     stages {
-        stage('Print env') {
-            environment {
-                A = credentials('testcre')
-            }
-            steps {
-                echo '$A'
-                echo "$A"
-                echo '$A_PSW'
-                echo "$A_PSW"
-            }
-        }
-
         stage('Checkout Source') {
             steps {
                 git 'https://github.com/longnh994/nodeapp_test'
