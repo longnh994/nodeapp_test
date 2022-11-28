@@ -1,3 +1,4 @@
+@Library("shared-library") _
 pipeline {
 
     environment {
@@ -9,32 +10,40 @@ pipeline {
 
     stages {
 
-        stage('Checkout Source') {
-            steps {
-                git 'https://github.com/longnh994/nodeapp_test'
-            }
-        }
-
-        stage('Build image') {
-            steps {
+        stage('Stage 0'){
+            steps{
                 script {
-                    dockerImage = docker.build dockerimagename
+                    helloword(name: "BlackXu", day: "Monday")
                 }
             }
         }
 
-        stage('Push image') {
-            environment {
-                registryCredential = 'dockerhublogin'
-            }
-            steps {
-                script {
-                    docker.withRegistry('https://registry.hub.docker.com/', registryCredential) {
-                    dockerImage.push()
-                    }
-                }
-            }
-        }
+        // stage('Checkout Source') {
+        //     steps {
+        //         git 'https://github.com/longnh994/nodeapp_test'
+        //     }
+        // }
+
+        // stage('Build image') {
+        //     steps {
+        //         script {
+        //             dockerImage = docker.build dockerimagename
+        //         }
+        //     }
+        // }
+
+        // stage('Push image') {
+        //     environment {
+        //         registryCredential = 'dockerhublogin'
+        //     }
+        //     steps {
+        //         script {
+        //             docker.withRegistry('https://registry.hub.docker.com/', registryCredential) {
+        //             dockerImage.push()
+        //             }
+        //         }
+        //     }
+        // }
 
         // stage('Deploy') {
         //     steps {
