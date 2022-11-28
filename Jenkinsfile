@@ -13,7 +13,7 @@ pipeline {
         stage('Stage 0'){
             steps{
                 script {
-                    helloword(name: "BlackXu", dayOfWeek: "Monday")
+                    helloworldExternal(name: "BlackXu", dayOfWeek: "Monday")
                 }
             }
         }
